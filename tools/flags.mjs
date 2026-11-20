@@ -26,6 +26,8 @@ const F = {
   DE: () => h("#000000", "#dd0000", "#ffce00"),
   FR: () => v("#0055a4", "#ffffff", "#ef4135"),
   IT: () => v("#009246", "#ffffff", "#ce2b37"),
+  // Vatican: yellow and white halves, with a small gold key mark on the white
+  VA: () => `<rect width="15" height="20" fill="#ffe000"/><rect x="15" width="15" height="20" fill="#fff"/><circle cx="22.5" cy="10" r="3.2" fill="none" stroke="#c9a227" stroke-width="1.4"/>`,
   ES: () => h("#aa151b", "#f1bf00", "#f1bf00", "#aa151b"),
   DK: () => `<rect width="30" height="20" fill="#c8102e"/><rect x="9" width="4" height="20" fill="#fff"/><rect y="8" width="30" height="4" fill="#fff"/>`,
   GB: () => `<rect width="30" height="20" fill="#012169"/>

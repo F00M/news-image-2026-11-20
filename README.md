@@ -4,12 +4,13 @@
 [![rank](https://make.fun/badge/news-image-20261120/F00M/news-image-2026-11-20/rank.svg)](https://make.fun/bounty/news-image-20261120/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261120)
 [![reward](https://make.fun/badge/news-image-20261120/F00M/news-image-2026-11-20/reward.svg)](https://make.fun/bounty/news-image-20261120?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261120)
 
-Friday 20 November 2026 as one front page: 50 stories from 7 regions, every one from that day.
+Friday 20 November 2026 as one front page: 51 stories from 7 regions, every one from that day.
 
 ![Friday 20 November 2026](entry.png)
 
+- **Six numbers.** The day at a glance in big type: 3 Kyiv bridges, 440,000 sheltered from Cyclone Akvan, Taiwan −6.2%, 100,000 UK–EU youth visas, Japan 2.3% inflation, 1 in 4 children near war.
 - **The day on a UTC clock.** A night-to-day-to-night sky strip places the timed events: the overnight strikes on Kyiv's bridges, Cyclone Akvan's landfall, the Tokyo and Seoul closes, the Los Angeles quake, the Wall Street open.
-- **Three leads, twelve cards, 35 one-liners.** Leads and cards carry an original flat illustration and a label for how sure the story is (CONFIRMED, OFFICIAL, REPORTED, REPORT); every one-liner names its source.
+- **Three leads, twelve cards, 36 one-liners.** Leads and cards carry an original flat illustration and a label for how sure the story is (CONFIRMED, OFFICIAL, REPORTED, REPORT); every one-liner names its source.
 - **Map.** An Equal Earth map, projected here from Natural Earth data, puts each numbered story where it happened.
 - **Date check.** Thursday's news that is left out on purpose, and what has not happened yet, are listed at the foot of the page.
 

@@ -11,7 +11,7 @@ import { resolve, dirname } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { buildMap } from "./geo.mjs";
 import { flag } from "./flags.mjs";
-import { DAY, TIMELINE, LEADS, CARDS, BRIEFS, DATE_CHECK, SOURCES } from "../design/stories.mjs";
+import { DAY, NUMBERS, TIMELINE, LEADS, CARDS, BRIEFS, DATE_CHECK, SOURCES } from "../design/stories.mjs";
 import { ART } from "../design/art.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -48,7 +48,7 @@ const DOTS = {
   Myanmar: [96.1, 19.7], Pakistan: [73.0, 33.7], Senegal: [-17.4, 14.7], Somaliland: [44.1, 9.6],
   "S. Africa": [28.0, -26.2], Malawi: [33.8, -14.0], "New York": [-74.0, 40.7], "Wall St": [-74.0, 40.7],
   NSA: [-76.8, 39.1], Cinemas: [-98, 39], OAS: [-77.0, 38.9], COP31: [30.7, 36.9], UN: [-74.0, 40.7], Trump: [-77, 38.9],
-  Turin: [7.7, 45.1], "Las Vegas": [-115.2, 36.2], Brazil: [-47.9, -15.8], Wellington: [174.8, -41.3],
+  Zelensky: [30.5, 50.4], Germany: [10.4, 51.2], Vatican: [12.45, 41.9], Turin: [7.7, 45.1], "Las Vegas": [-115.2, 36.2], Brazil: [-47.9, -15.8], Wellington: [174.8, -41.3],
 };
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -93,6 +93,12 @@ function mapSvg(map) {
     <path d="${map.sea}" fill="#dfe9f1"/>
     <g fill="#d8cfbd" stroke="#f7f3ea" stroke-width=".5">${lands}</g>
     ${dots}${pins.join("")}</svg>`;
+}
+
+// key numbers of the day, coloured by region
+function numbers() {
+  return `<section class="nums">` + NUMBERS.map((x) =>
+    `<div class="fit" style="border-color:${REGIONS[x.reg].c}"><b style="color:${REGIONS[x.reg].c}">${esc(x.n)}</b><span>${esc(x.t)}</span></div>`).join("") + `</section>`;
 }
 
 function timeline() {
@@ -151,9 +157,12 @@ function page(map) {
   .top{display:flex;justify-content:space-between;align-items:center;height:22px;border-bottom:2px solid #1d1d1f;font:700 11.5px Bahnschrift,"Segoe UI",sans-serif;letter-spacing:.06em;text-transform:uppercase}
   .top .l{color:#c62f2f}
   .top>span{white-space:nowrap}
-  h1{font:700 62px/1 Georgia,"Times New Roman",serif;text-align:center;letter-spacing:-.015em;margin-top:3px;white-space:nowrap}
-  .dek{font:italic 14.5px/1.2 Georgia,serif;text-align:center;margin-top:3px;color:#333;padding-bottom:5px;border-bottom:1px solid #1d1d1f}
-  .sky{position:relative;height:50px;margin-top:5px}
+  h1{font:700 55px/1 Georgia,"Times New Roman",serif;text-align:center;letter-spacing:-.015em;margin-top:3px;white-space:nowrap}
+  .nums{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:4px;padding:4px 0 5px;border-top:1px solid #1d1d1f;border-bottom:1px solid #1d1d1f}
+  .nums div{border-left:4px solid;padding-left:7px}
+  .nums b{display:block;font:700 25px/1 Georgia,serif;letter-spacing:-.01em}
+  .nums span{display:block;font:11px/1.18 "Segoe UI",sans-serif;color:#333;margin-top:1px;height:26px;overflow:hidden}
+  .sky{position:relative;height:48px;margin-top:5px}
   .band{position:absolute;left:12px;right:12px;top:0;height:13px;border-radius:7px;
     background:linear-gradient(90deg,#0f1d3d 0%,#22345f 18%,#f0a35e 27%,#9cc9ea 38%,#bfe0f5 50%,#9cc9ea 62%,#f0a35e 73%,#22345f 82%,#0f1d3d 100%)}
   .tick{position:absolute;top:1px;transform:translateX(-50%);font:700 9px Bahnschrift,sans-serif;color:#fff;text-shadow:0 0 2px rgba(0,0,0,.6)}
@@ -162,7 +171,7 @@ function page(map) {
   .skylabel{display:none}
   .ev{position:absolute;white-space:nowrap;font:12px/1 "Segoe UI",sans-serif;padding-left:9px;border-left:1.5px solid #1d1d1f}
   .ev.hi{top:13px;height:24px;padding-top:11px}
-  .ev.lo{top:13px;height:38px;padding-top:25px}
+  .ev.lo{top:13px;height:36px;padding-top:23px}
   .ev.r{border-left:0;border-right:1.5px solid #1d1d1f;padding-left:0;padding-right:9px;transform:translateX(-100%)}
   .ev.r i{left:auto;right:-5px}
   .ev i{position:absolute;left:-5px;top:-1px;width:8px;height:8px;border-radius:50%;border:1.5px solid #fff}
@@ -171,20 +180,20 @@ function page(map) {
   .regbar div{color:#fff;font:700 10.5px/15px Bahnschrift,sans-serif;text-align:center;white-space:nowrap;overflow:hidden;letter-spacing:.03em}
   .leads{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:6px}
   .art{overflow:hidden;border-radius:2px}
-  .lead .art{height:116px}
+  .lead .art{height:104px}
   .kick{display:flex;align-items:center;gap:5px;margin-top:5px;font:700 11px Bahnschrift,sans-serif;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
   .num{display:inline-block;min-width:17px;height:17px;border-radius:9px;color:#fff;font:700 11px/17px Bahnschrift,sans-serif;text-align:center;padding:0 3px}
   .tag{margin-left:auto;border:1.2px solid;border-radius:2px;font:700 9.5px/1 Bahnschrift,sans-serif;padding:2px 4px;letter-spacing:.04em}
   .lead h2{font:700 22px/1.06 Georgia,serif;margin-top:2px;height:47px;overflow:hidden}
-  .lead p{font:12.3px/1.28 "Segoe UI",sans-serif;margin-top:2px;height:47px;overflow:hidden;color:#262626}
+  .lead p{font:12.3px/1.28 "Segoe UI",sans-serif;margin-top:2px;height:32px;overflow:hidden;color:#262626}
   .src{color:#777;font-size:.85em;white-space:nowrap}
   .cards{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:5px;padding-top:5px;border-top:1px solid #1d1d1f}
   .cards+.cards{border-top:1px solid #cfc6b4}
-  .card .art{height:56px}
+  .card .art{height:50px}
   .card .kick{font-size:10px;margin-top:4px}
   .card .num{min-width:16px;height:16px;font-size:10px;line-height:16px}
   .card .pl{overflow:hidden;text-overflow:clip}
-  .card h3{font:700 13.8px/1.1 Georgia,serif;margin-top:1px;height:46px;overflow:hidden}
+  .card h3{font:700 15px/1.08 Georgia,serif;margin-top:1px;height:49px;overflow:hidden}
   .card .foot{display:flex;align-items:center;gap:4px;margin-top:1px;height:15px}
   .card .foot .tag{margin-left:0;font-size:8.5px;padding:2px 3px}
   .card .foot .src{font-size:10px;overflow:hidden}
@@ -211,7 +220,7 @@ function page(map) {
   </style></head><body><div class="pg">
   <div class="top"><span class="l">${esc(DAY.kicker)}</span>${regionKey()}<span>${total} stories · ${regions} regions · all from ${DAY.date.replace(" 2026", "")}</span></div>
   <h1>${DAY.weekday} ${DAY.date}</h1>
-  <div class="dek">${esc(DAY.dek)}</div>
+  ${numbers()}
   ${timeline()}
   <section class="leads">${LEADS.map(lead).join("")}</section>
   <section class="cards">${CARDS.slice(0, 6).map((c, i) => card(c, i)).join("")}</section>
